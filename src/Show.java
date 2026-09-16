@@ -14,13 +14,22 @@ public class Show {
     }
 
     public void showDirectorInfo() {
-        System.out.println("Поставил шоу: " + director.toString());
+        System.out.println("Поставил шоу: " + director);
+    }
+
+    public void showActors() {
+        for (Actor actor : listOfActors) {
+            System.out.println(actor);
+        }
     }
 
     @Override
     public String toString() {
         return "Show{" +
-                "listOfActors=" + listOfActors +
+                "title='" + title + '\'' +
+                ", duration=" + duration +
+                ", director=" + director +
+                ", listOfActors=" + listOfActors +
                 '}';
     }
 
@@ -28,7 +37,7 @@ public class Show {
         boolean isNewActor = true;
         for (Actor otherActor : listOfActors) {
             if (actor.equals(otherActor)) {
-                System.out.println("Этот актер уже присутствует");
+                System.out.println("Этот актёр уже присутствует");
                 isNewActor = false;
                 break;
             }
@@ -38,14 +47,14 @@ public class Show {
         }
     }
 
-    public void replacementActor(Actor actor) {
+    public void replacementActor(Actor actor, String surname) {
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor otherActor = listOfActors.get(i);
-            if (actor.surname.equals(otherActor.surname)) {
+            if (surname.equals(otherActor.surname)) {
                 listOfActors.set(i, actor);
                 return;
             }
         }
-        System.out.println("Актёр с фамилией " + actor.surname + " не найден");
+        System.out.println("Актёр с фамилией " + surname + " не найден");
     }
 }
